@@ -1,1 +1,13 @@
 # homework5
+
+This daily planner displays the current day and date at the top of the scheduler, which is updated dynamically via the use of the moment.js framework. The display of this date was relatively easy compared to some of the other required tasks.
+
+The planner features timeblocks for standard business hours between 9am and 5pm. Creating the structure of the planner was a bit more challenging, but just required a refresh of bootstrap and column layouts. 
+
+The hourly blocks change colour based on the time of day, which was very challenging to achieve but was possible with help from one of the TAs. I understood that I needed conditional statements, which needed to be linked to the currentTime variable (which I had set previously, and was working), and I also understood that I needed to link the statements to the relevant CSS classes, which were already provided. What I didn't understand, (and what the TA was able to help me with), was that I was inadvertently turning my currentTime variable into a string by using the .format(), which turns a moment into a string. For the same reason, my .isBefore() and .isAfter() statements were not working. I also needed to add .hour() to the end of my hourly variables, to specify that the colour block should change if the time was within the entire hour, not down to the seconds!
+
+Another challenge was the local storage function. My tutor helped me understand that the first parameter(?) within the brackets of localStorage.setItem() was supposed to be NEW key or label, to be called on later, rather than a reference to an existing label. When I read about the local storage function, I was initially confused because it referred to the information having to be imparted in 'pairs'. The tutor also advised me to add the .val() method, which I will have to look into more, as I don't fully understand it.
+
+One last thing worth mentioning is that my code is ridiculously wrong. At the moment, I am just happy that it's working, as I think I'd prefer the logic to be absolutely evident to me written out 10x than confuse myself with additional syntax. That being said, the brevity of my code is something I know I need to work on as a secondary consideration in the future. 
+
+Please, please provide us with the suggestion solution for all of the homework classes. If the teacher doesn't have time to go through the solution in class then I will do so with my tutor, but it is impossible to learn from my mistakes and how I could have done better if I don't have the solution. Thanks!

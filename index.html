@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <title>Work Day Scheduler</title>
+</head>
+
+<body>
+  <header class="jumbotron">
+    <h1 class="display-3">Work Day Scheduler</h1>
+    <p class="lead">A simple calendar app for scheduling your work day</p>
+    <p id="currentDay" class="lead"></p>
+  </header>
+  <div class="container">
+    <!-- Timeblocks go here -->
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-1 hour time-block" id="hour9">9am</div>
+          <input class="col-10 input time-block" id="inp9" type="text">
+          <button class="col-1 saveBtn" type="button">save</button>
+        </div>
+        <div class="row">
+          <div class="col-1 hour time-block" id="hour10">10am</div>
+          <input class="col-10 input time-block" id="inp10" type="text">
+          <button class="col-1 saveBtn" type="button">save</button>
+        </div>
+        <div class="row">
+            <div class="col-1 hour time-block" id="hour11">11am</div>
+            <input class="col-10 input time-block" id="inp11" type="text">
+            <button class="col-1 saveBtn" type="button">save</button>
+        </div>
+        <div class="row">
+          <div class="col-1 hour time-block" id="hour12">12pm</div>
+          <input class="col-10 input time-block" id="inp12" type="text">
+          <button class="col-1 saveBtn" type="button">save</button>
+        </div>
+        <div class="row">
+          <div class="col-1 hour time-block" id="hour13">1pm</div>
+          <input class="col-10 input time-block" id="inp13" type="text">
+          <button class="col-1 saveBtn" type="button">save</button>
+        </div>
+        <div class="row">
+          <div class="col-1 hour time-block" id="hour14">2pm</div>
+          <input class="col-10 input time-block" id="inp14" type="text">
+          <button class="col-1 saveBtn" type="button">save</button>
+        </div>
+        <div class="row">
+          <div class="col-1 hour time-block" id="hour15">3pm</div>
+          <input class="col-10 input time-block" id="inp15" type="text">
+          <button class="col-1 saveBtn" type="button">save</button>
+        </div>
+        <div class="row">
+          <div class="col-1 hour time-block" id="hour16">4pm</div>
+          <input class="col-10 input time-block" id="inp16" type="text">
+          <button class="col-1 saveBtn" type="button">save</button>
+        </div>
+        <div class="row">
+          <div class="col-1 hour time-block" id="hour17">5pm</div>
+          <input class="col-10 input time-block" id="inp17" type="text">
+          <button class="col-1 saveBtn" type="button">save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--JAVASCRIPT/JQUERY-->
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+//DECLARE VARIABLES
+var inpValue = $(".input")
+var inp9 = $("#inp9")
+var inp10 = $("#inp10")
+var inp11 = $("#inp11")
+var inp12 = $("#inp12")
+var inp13 = $("#inp13")
+var inp14 = $("#inp14")
+var inp15 = $("#inp15")
+var inp16 = $("#inp16")
+var inp17 = $("#inp17")
+
+var saveBtn = $(".btn")
+
+var hour9 = $("#hour9")
+var hour10 = $("#hour10")
+var hour11 = $("#hour11")
+var hour12 = $("#hour12")
+var hour13 = $("#hour13")
+var hour14 = $("#hour14")
+var hour15 = $("#hour15")
+var hour16 = $("#hour16")
+var hour17 = $("#hour17");
+
+//ON CLICK FUNCTION FOR BUTTONS TO SAVE TO LOCAL STORAGE
+//1. get input - store to variable
+//2. on click function attached to button
+//3. save to local storage
+$(".saveBtn").on("click", function(){
+  localStorage.setItem("hour9", inp9.val());
+  localStorage.setItem("hour10", inp10.val());
+  localStorage.setItem("hour11", inp11.val());
+  localStorage.setItem("hour12", inp12.val());
+  localStorage.setItem("hour13", inp13.val());
+  localStorage.setItem("hour14", inp14.val());
+  localStorage.setItem("hour15", inp15.val());
+  localStorage.setItem("hour16", inp16.val());
+  localStorage.setItem("hour17", inp17.val());
+});
+
+$("#inp9").val(localStorage.getItem("hour9"))
+$("#inp10").val(localStorage.getItem("hour10"))
+$("#inp11").val(localStorage.getItem("hour11"))
+$("#inp12").val(localStorage.getItem("hour12"))
+$("#inp13").val(localStorage.getItem("hour13"))
+$("#inp14").val(localStorage.getItem("hour14"))
+$("#inp15").val(localStorage.getItem("hour15"))
+$("#inp16").val(localStorage.getItem("hour16"))
+$("#inp17").val(localStorage.getItem("hour17"))
+
+
+//hour variables need to be equal to an hour in actual time
+
+hour9 = moment().hour(9);
+hour10 = moment().hour(10);
+hour11 = moment().hour(11);
+hour12 = moment().hour(12);
+hour13 = moment().hour(13);
+hour14 = moment().hour(14);
+hour15 = moment().hour(15);
+hour16 = moment().hour(16);
+hour17 = moment().hour(17);
+
+
+//DISPLAY DATE AND TIME AT TOP OF SCHEDULER
+const currentTime = moment();
+$("#currentDay").html("It is " + currentTime.format("dddd, D MMMM YYYY, h:mm a"));
+
+// // //CHANGE COLOUR BASED ON TIME
+if (currentTime.hour() < hour9.hour()) {
+  $(inp9).addClass("future")}
+else if (currentTime.hour() === hour9.hour()) {
+  $(inp9).addClass("present");}
+else if (currentTime.hour() > (hour9.hour())) {
+  $(inp9).addClass("past");}
+
+if (currentTime.hour() < hour10.hour()) {
+  $(inp10).addClass("future")}
+else if (currentTime.hour() === hour10.hour()) {
+  $(inp10).addClass("present");}
+else if (currentTime.hour() > (hour10.hour())) {
+  $(inp10).addClass("past");}
+
+if (currentTime.hour() < hour11.hour()) {
+  $(inp11).addClass("future")}
+else if (currentTime.hour() === hour11.hour()) {
+  $(inp11).addClass("present");}
+else if (currentTime.hour() > (hour11.hour())) {
+  $(inp11).addClass("past");}
+
+if (currentTime.hour() < hour12.hour()) {
+  $(inp12).addClass("future")}
+else if (currentTime.hour() === hour12.hour()) {
+  $(inp12).addClass("present");}
+else if (currentTime.hour() > (hour12.hour())) {
+  $(inp12).addClass("past");}
+
+if (currentTime.hour() < hour13.hour()) {
+  $(inp13).addClass("future")}
+else if (currentTime.hour() === hour13.hour()) {
+  $(inp13).addClass("present");}
+else if (currentTime.hour() > (hour13.hour())) {
+  $(inp13).addClass("past");}
+
+if (currentTime.hour() < hour14.hour()) {
+  $(inp14).addClass("future")}
+else if (currentTime.hour() === hour14.hour()) {
+  $(inp14).addClass("present");}
+else if (currentTime.hour() > (hour14.hour())) {
+  $(inp14).addClass("past");}
+
+if (currentTime.hour() < hour15.hour()) {
+  $(inp15).addClass("future")}
+else if (currentTime.hour() === hour15.hour()) {
+  $(inp15).addClass("present");}
+else if (currentTime.hour() > (hour15.hour())) {
+  $(inp15).addClass("past");}
+
+if (currentTime.hour() < hour16.hour()) {
+  $(inp16).addClass("future")}
+else if (currentTime.hour() === hour16.hour()) {
+  $(inp16).addClass("present");}
+else if (currentTime.hour() > (hour16.hour())) {
+  $(inp16).addClass("past");}
+
+  
+if (currentTime.hour() < hour17.hour()) {
+  $(inp17).addClass("future")}
+else if (currentTime.hour() === hour17.hour()) {
+  $(inp17).addClass("present");}
+else if (currentTime.hour() > (hour17.hour())) {
+  $(inp17).addClass("past");}
+
+})
+</script>
+</body>
+
+</html>
